@@ -1,6 +1,11 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
-COPY minecraft /minecraft
+#VOLUME C:\\ProgramData\\Docker\\volumes\\minecraft
+#VOLUME /minecraft
+
+VOLUME C:\\minecraft
+
+COPY minecraft/. /minecraft-tmp
 
 # These are the values you should overwrite
 # BRUTALLY (sort of) ~stolen~ inspired by https://github.com/oracle/docker-images/blob/master/OracleJava/windows-java-8/nanoserver/Dockerfile
@@ -19,7 +24,9 @@ ENV PATH="%PATH%;$JAVA_HOME\bin"
 
 WORKDIR /minecraft
 
+CMD copy C:\minecraft-tmp\* C:\minecraft /y
+
 #CMD FOR LOCAL
 #CMD java -Xms512m -Xmx512m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui
 #CMD FOR SERVER
-CMD java -Xms1024m -Xmx1024m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui
+#CMD java -Xms1024m -Xmx1024m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui
