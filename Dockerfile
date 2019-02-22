@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows/nanoserver:1809-amd64
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 COPY minecraft /minecraft
 
@@ -13,6 +13,7 @@ ADD $JAVA_PKG /
 # and I don't want to do it as Administrator
 #  because then the environment isn't set.. hardcode it!
 # docker run -it --rm microsoft/nanoserver:1803 cmd.exe /C "set"
+#USER Administrator
 #RUN setx /M PATH %PATH%;%JAVA_HOME%\bin
 ENV PATH="%PATH%;$JAVA_HOME\bin"
 
@@ -21,4 +22,4 @@ WORKDIR /minecraft
 #CMD FOR LOCAL
 #CMD java -Xms512m -Xmx512m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui
 #CMD FOR SERVER
-CMD [ "java -Xms1024m -Xmx1024m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui" ]
+CMD java -Xms1024m -Xmx1024m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui
