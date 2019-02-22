@@ -29,7 +29,7 @@ CMD copy C:\minecraft-tmp\* C:\minecraft /y
 #CMD FOR LOCAL
 #CMD java -Xms512m -Xmx512m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui
 #CMD FOR SERVER
-#CMD java -Xms1024m -Xmx1024m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui
+CMD java -Xms1024m -Xmx1024m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui
 
 #need to run docker volume create minecraft on server
 
