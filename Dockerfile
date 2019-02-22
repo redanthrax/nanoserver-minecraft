@@ -30,3 +30,11 @@ CMD copy C:\minecraft-tmp\* C:\minecraft /y
 #CMD java -Xms512m -Xmx512m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui
 #CMD FOR SERVER
 #CMD java -Xms1024m -Xmx1024m -jar -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 server.jar nogui
+
+#need to run docker volume create minecraft on server
+
+#to run interactive
+#docker run -it --rm -v C:\ProgramData\Docker\volumes\minecraft:C:\minecraft -p 25565:25565 --name minecraft redanthrax/mc cmd
+
+#to run server
+#docker run -d -v C:\ProgramData\Docker\volumes\minecraft:C:\minecraft -p 25565:25565 --name minecraft redanthrax/mc
